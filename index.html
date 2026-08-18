@@ -227,6 +227,7 @@
 
         }
 
+
         /* =====================================================
            🌿 DECORATIVE BRANCHES
         ===================================================== */
@@ -398,6 +399,7 @@
             }
 
         }
+
 
         /* =====================================================
            🎵 MUSIC BUTTON
@@ -803,6 +805,7 @@
 
         }
 
+
         /* =====================================================
            📦 CONTAINER
         ===================================================== */
@@ -841,6 +844,7 @@
             transform:
                 translateY(0);
         }
+
 
         /* =====================================================
            💍 MAIN CARD
@@ -1189,6 +1193,7 @@
 
         }
 
+
         /* =====================================================
            DIVIDER
         ===================================================== */
@@ -1364,6 +1369,7 @@
             color:
                 var(--secondary-color);
         }
+
 
         /* =====================================================
            TIMELINE
@@ -1696,6 +1702,7 @@
                 var(--text-dark);
         }
 
+
         /* =====================================================
            MAP
         ===================================================== */
@@ -1959,6 +1966,7 @@
 
         }
 
+
         /* =====================================================
            REDUCED MOTION
         ===================================================== */
@@ -2089,7 +2097,7 @@
 
         <div class="envelope-salawat">
 
-            اللهم صلِّ وسلم وبارك على سيدنا محمد
+            اللهم صلِّ وسلم وبارك على سيدنا محمد
 
         </div>
 
@@ -2167,7 +2175,7 @@
 
                 
 
-                  
+                   
 
                
 
@@ -2175,7 +2183,7 @@
 
                     
 
-               
+                
 
                 <h2
                     class="quran-verse"
@@ -2232,6 +2240,7 @@
             </div>
 
         </div>
+
 
         <!-- =================================================
              COUNTDOWN
@@ -2378,6 +2387,7 @@
             ❖ تأكيد الحضور ❖
 
         </div>
+
 
         <div class="stats-box fade-in">
 
@@ -2526,11 +2536,11 @@
             <div style="margin-top:10px;">
 
                 <a
-                    href="#"
-                    id="directionsButton"
+                    href="https://maps.google.com/?q=LA+REINE+نادي+سن+رايز+طريق+مصر+إسماعيلية"
+                    target="_blank"
                     class="btn-action">
 
-                    📍 التحرك إلى القاعة
+                    📍 فتح الموقع في خرائط Google
 
                 </a>
 
@@ -2648,6 +2658,7 @@
             envelopeScreen.classList.add(
                 'opened'
             );
+
 
             audio.play()
 
@@ -2926,6 +2937,7 @@
                     '.petals'
                 );
 
+
             for (
                 let i = 0;
                 i < 12;
@@ -2983,60 +2995,6 @@
 
 
         createExtraPetals();
-
-
-        /* =================================================
-           📍 DIRECTIONS BUTTON
-        ================================================= */
-
-        const directionsButton =
-            document.getElementById("directionsButton");
-
-        // إحداثيات القاعة - استبدليها بالإحداثيات الصحيحة
-        const venueLatitude = 30.1267;
-        const venueLongitude = 31.4016;
-
-        directionsButton.addEventListener("click", function (event) {
-            event.preventDefault();
-
-            if (!navigator.geolocation) {
-                alert("المتصفح لا يدعم تحديد الموقع.");
-                return;
-            }
-
-            directionsButton.innerText = "⏳ جاري تحديد موقعك...";
-
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    const userLatitude = position.coords.latitude;
-                    const userLongitude = position.coords.longitude;
-
-                    const googleMapsUrl =
-                        `https://www.google.com/maps/dir/?api=1` +
-                        `&origin=${userLatitude},${userLongitude}` +
-                        `&destination=${venueLatitude},${venueLongitude}` +
-                        `&travelmode=driving`;
-
-                    window.open(googleMapsUrl, "_blank");
-
-                    directionsButton.innerText = "📍 التحرك إلى القاعة";
-                },
-                function (error) {
-                    directionsButton.innerText = "📍 التحرك إلى القاعة";
-
-                    if (error.code === error.PERMISSION_DENIED) {
-                        alert("لازم تسمح للموقع بالوصول إلى مكانك.");
-                    } else {
-                        alert("تعذر تحديد موقعك، حاول مرة أخرى.");
-                    }
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 0
-                }
-            );
-        });
 
     </script>
 
